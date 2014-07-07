@@ -1,0 +1,10 @@
+{
+  "name": "BreezeDemo",
+  "dependencies": {
+    "angular": "~1.2.16",
+    "angular-route": "~1.2.16",
+    "breezejs": "~1.4.13",
+    "q": "~1.0",
+    "jquery": "~2.1.0"
+  }
+}
