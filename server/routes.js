@@ -12,6 +12,7 @@
 
 	routes.initialize = function(app) {
 		app.get('/breeze/Metadata', metadata);
+		app.post('/breeze/SaveChanges', routes.saveChanges)
 		app.get('/breeze/:slug', routes.get);
 	};
 
@@ -19,7 +20,13 @@
 		var query = new breezeMongo.MongoQuery(request.query);
 
 		query.execute(db, request.params.slug, processResults(result, next));
-	}
+	};
+
+	routes.saveChanges = function(req, res, next) {
+		req = JSON.parse(req);
+    var saveHandler = new breezeMongo.MongoSaveHandler(db, req, processResults(res, next));
+    saveHandler.save();
+	};
 
 	function metadata(request, result, next) {
 		next({

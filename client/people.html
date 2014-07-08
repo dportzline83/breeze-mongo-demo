@@ -8,10 +8,11 @@
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="person in people">
-				<td>{{person.name}}</td>
-				<td>{{person.age}}</td>
-				<td>{{person.status}}</td>
+				<td><input type="text" ng-model="person.name" /></td>
+				<td><input type="text" ng-model="person.age" /></td>
+				<td><input type="text" ng-model="person.status" /></td>
 			</tr>
 		</tbody>
 	</table>
+	<button ng-click="save(person)">Save</button>
 </div>
