@@ -1,14 +1,26 @@
 (function(routes) {
-	var mongodb = require('mongodb');
+	var mongodb = require('mongodb').MongoClient;
 	var breezeMongo = require('breeze-mongodb');
 	var fs = require('fs');
 
 	var host = 'localhost';
 	var port = 27017;
 	var dbName = 'demo';
-	var dbServer = new mongodb.Server(host, port, {auto_reconnect: true});
-	var db = new mongodb.Db(dbName, dbServer, {strict: true, w: 1});
-	db.open(function() {});
+	// var dbServer = new mongodb.Server(host, port, {auto_reconnect: true});
+	// var db = new mongodb.Db(dbName, dbServer, {strict: true, w: 1});
+	// db.open(function() {});
+	var db = null;
+	var mongoOptions = {
+    server: {auto_reconnect: true}
+  };
+	mongodb.connect("mongodb://localhost:27017/demo", mongoOptions, function(error, database) {
+		if (error) {
+			console.log(error);
+		}
+		else {
+			db = database;
+		}
+	});
 
 	routes.initialize = function(app) {
 		app.get('/breeze/Metadata', metadata);

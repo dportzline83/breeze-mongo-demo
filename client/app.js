@@ -22,7 +22,7 @@
 			manager = new breeze.EntityManager({dataService: dataService, metadataStore: createMetadataStore(dataService)});
 
 		breeze.EntityQuery
-			.from('people')
+			.from('Persons')
 			.where('name', 'startsWith', 'D')
 			.using(manager)
 			.execute()
@@ -56,7 +56,7 @@
 			};
 
 		addType({
-			name: 'people',
+			name: 'Person',
 			dataProperties: {
 				_id: {type: breeze.DataType.MongoObjectId, isPartOfKey: true},
 				name: {max: 50},
