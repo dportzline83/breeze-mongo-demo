@@ -23,8 +23,7 @@
 	};
 
 	routes.saveChanges = function(req, res, next) {
-		req = JSON.parse(req);
-    var saveHandler = new breezeMongo.MongoSaveHandler(db, req, processResults(res, next));
+    var saveHandler = new breezeMongo.MongoSaveHandler(db, req.body, processResults(res, next));
     saveHandler.save();
 	};
 
