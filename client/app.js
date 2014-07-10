@@ -1,11 +1,10 @@
-(function (angular) {
+(function (angular, breeze) {
+	window.breeze.config.initializeAdapterInstance("dataService", "mongo", true);
+	
 	var app = angular.module('app', ['ngLocale', 'ngRoute']);
 
-	app.value('breeze', window.breeze)
-	.value('Q', window.Q);
-
-	breeze.config.initializeAdapterInstance("dataService", "mongo", true);
-
+	app.value('breeze', breeze);
+	
 	app.config([
   	'$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -16,7 +15,7 @@
       });
 	}]);
 
-	app.controller('PeopleCtrl', ['$scope', 'manager', function($scope, manager) {
+	app.controller('PeopleCtrl', ['$scope', 'breeze', 'manager', function($scope, breeze, manager) {
 
 		$scope.people = [];
 
@@ -50,6 +49,4 @@
 		};
 
 	}]);
-
-	
-})(angular);
+})(angular, breeze);

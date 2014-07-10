@@ -3,6 +3,7 @@
 	var app = angular.module('app');
 
 	app.factory('manager', function() {
+		
 		var dataService = new breeze.DataService({serviceName: 'breeze'}),
 			metadataStore = createMetadataStore(dataService),
 			manager = new breeze.EntityManager({
