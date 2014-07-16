@@ -32,5 +32,19 @@
 			var newPerson = manager.createEntity("Person");
 			$scope.people.push(newPerson);
 		};
+
+		$scope.delete = function(person) {
+			var index = $scope.people.indexOf(person);
+
+			if (!person) {
+				console.log("could not delete undefined person");
+				return;
+			}
+			person.entityAspect.setDeleted();
+			console.log("marked '" + person.name + "'' as deleted")
+			$scope.save();
+
+			$scope.people.splice(index, 1);
+		};
 	}]);
 })(angular);

@@ -5,7 +5,7 @@
 		fileServer = require('serve-static'),
 		bodyParser = require('body-parser');
 
-	app.use( fileServer( __dirname+'/../client' )); // was fileServer( process.cwd() )
+	app.use( fileServer( __dirname+'/../client' ));
 	app.use(bodyParser());
 
 	routes.initialize(app);

@@ -2,12 +2,14 @@
 	<table>
 		<caption>People</caption>
 		<thead>
+			<td></td>
 			<th>Name</th>
 			<th>Age</th>
 			<th>Status</th>
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="person in people">
+				<td><button ng-click="delete(person)">Delete</button></td>
 				<td><input type="text" ng-model="person.name" /></td>
 				<td><input type="text" ng-model="person.age" /></td>
 				<td><input type="text" ng-model="person.status" /></td>
