@@ -3,3 +3,4 @@
 *.1
 *.ns
 database/journal
+database/.DS_Store
